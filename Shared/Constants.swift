@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct World {
-    var initialViewTested = LoginView()
-    var isSkippingInitialScene: Bool = false // Set to true to go to scene above from the start.
+    let initialViewTested = LoginView()
+    let isSkippingInitialScene: Bool = false // Set to true to go to scene above from the start.
 
     var sampleUser = "" // "username" normally in testing but requirement wants any username to work OK for now.
     var samplePassword = "password"
 
-    var ourGiphyKey = "6RHSbiXgC4foK6TeqQJ6oJFaW8pa6bsJ"
+    let ourGiphyKey = "6RHSbiXgC4foK6TeqQJ6oJFaW8pa6bsJ"
 
-    var realLiveGifLink = "https://c.tenor.com/-SJFHGdMU58AAAAM/gigi-hadid-sassy.gif"
+    let realLiveGifLink = "https://c.tenor.com/-SJFHGdMU58AAAAM/gigi-hadid-sassy.gif"
     // from Tenor https://tenor.com
 
     // swiftlint:disable:next line_length
-    var realLiveJSONQueryLink = "https://api.giphy.com/v1/gifs/search?api_key=6RHSbiXgC4foK6TeqQJ6oJFaW8pa6bsJ&q=swiftui"
+    let realLiveJSONQueryLink = "https://api.giphy.com/v1/gifs/search?api_key=6RHSbiXgC4foK6TeqQJ6oJFaW8pa6bsJ&q=swiftui"
     // remoteGifJSON… Welcome(data: [Datum], pagination: Pagination, meta: Meta)
 
     // Colors for LinearGradient.
