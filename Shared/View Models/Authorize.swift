@@ -23,8 +23,6 @@ class AuthorizeViewModel: ObservableObject {
 
     @Published var readyToGo: Bool = false
 
-    private var cancellables: Set<AnyCancellable> = []
-
     func toggleAuthentication() {
         self.password = ""
         withAnimation {
@@ -89,7 +87,6 @@ class AuthorizeViewModel: ObservableObject {
             .map { bothFieldsValid -> Bool in
                 return bothFieldsValid
             }
-            .assign(to: \.readyToGo, on: self)
-            .store(in: &cancellables)
+            .assign(to: &$readyToGo)
     }
 }
