@@ -22,6 +22,7 @@
 		9A408DA3286AD58C00B8A6DB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A408DA2286AD58C00B8A6DB /* DetailView.swift */; };
 		9A408DA7286AD63800B8A6DB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A408DA6286AD63800B8A6DB /* Constants.swift */; };
 		9A408DA9286AD8A400B8A6DB /* TopgolferGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A408DA8286AD8A400B8A6DB /* TopgolferGif.swift */; };
+		9A6B4632286D932B008DBF3A /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6B4631286D932B008DBF3A /* Detail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		9A408DA2286AD58C00B8A6DB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9A408DA6286AD63800B8A6DB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9A408DA8286AD8A400B8A6DB /* TopgolferGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopgolferGif.swift; sourceTree = "<group>"; };
+		9A6B4631286D932B008DBF3A /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		9AADC239286C405700A8EBFF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				9A408D98286AD53F00B8A6DB /* Authorize.swift */,
+				9A6B4631286D932B008DBF3A /* Detail.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				9A408DA3286AD58C00B8A6DB /* DetailView.swift in Sources */,
 				9A408D9B286AD55400B8A6DB /* NetworkService.swift in Sources */,
 				9A408D9D286AD56100B8A6DB /* URLPieces.swift in Sources */,
+				9A6B4632286D932B008DBF3A /* Detail.swift in Sources */,
 				9A408DA9286AD8A400B8A6DB /* TopgolferGif.swift in Sources */,
 				9A408D7D286AD3B600B8A6DB /* TopTestApp.swift in Sources */,
 				9A408DA7286AD63800B8A6DB /* Constants.swift in Sources */,
