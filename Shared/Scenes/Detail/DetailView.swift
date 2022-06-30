@@ -7,23 +7,45 @@
 
 import SwiftUI
 
+@MainActor
+class DetailViewModel: ObservableObject {
+    @Published var gifAddress: String = ""
+    @Published var gifTitle: String = ""
+
+    func fetchSpecificJSON() {
+        let whereLiveGifsAre = URL(string: current.realLiveJSONQueryLink)!
+
+        let welcomePublisher = URLSession.shared.dataTaskPublisher(for: whereLiveGifsAre)
+            .map(\.data)
+            .decode(type: Welcome.self, decoder: JSONDecoder())
+
+        welcomePublisher
+            .map { $0.data.first?.images.original.url ?? "" }
+            .replaceError(with: "Error Getting Gif Address")
+            .assign(to: &$gifAddress)
+
+        welcomePublisher
+            .map { $0.data.first?.title ?? "Error Getting Gif Title" }
+            .replaceError(with: "")
+            .assign(to: &$gifTitle)
+    }
+}
+
 struct DetailView: View {
     @EnvironmentObject var authViewModel: AuthorizeViewModel
 
-    // Only need 1 gif displayed for this excercise.
-    @State var justOneGifAddress: String = ""
-    @State var justOneGifTitle: String = ""
+    @StateObject var detailViewModel: DetailViewModel = DetailViewModel()
 
     var body: some View {
         VStack {
             Text("Welcome **\(authViewModel.username)**!")
 
             VStack {
-                Text("\(justOneGifTitle)")
+                Text("\(detailViewModel.gifTitle)")
                     .padding(.top)
 
                 // swiftlint:disable:next line_length
-                AsyncImage(url: URL(string: current.realLiveGifLink), transaction: .init(animation: .spring(response: 1.7))) { phase in
+                AsyncImage(url: URL(string: detailViewModel.gifAddress), transaction: .init(animation: .spring(response: 1.7))) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -46,30 +68,8 @@ struct DetailView: View {
 
             logoutButton(authViewModel)
         }
-        .onAppear(perform: fetchSpecificJSON)
+        .onAppear { detailViewModel.fetchSpecificJSON() }
         .padding()
-    }
-
-    func fetchSpecificJSON() {
-        let whereLiveGifsAre = URL(string: current.realLiveJSONQueryLink)!
-
-        let gifsJSON = URLSession.shared.dataTask(with: whereLiveGifsAre) {(data, _, _) in
-            guard let data = data else {
-                print("Invalid Web Response")
-                return
-            }
-            // JSON loaded… print(String(data: data, encoding: .utf8)!)
-            if let giphyGroup = try? JSONDecoder().decode(Welcome.self, from: data) {
-                _ = giphyGroup.data.map {
-                    justOneGifAddress = $0.embedURL
-                    justOneGifTitle = $0.title
-                }
-            } else {
-                print(current.jsonErrorDecodingMessage)
-            }
-        }
-
-        gifsJSON.resume()
     }
 }
 
